@@ -52,13 +52,16 @@ export default function ArrowAnimation() {
 				dotLottieRefCallback={dotLottieRefCallback}
 			/>
 
-			{animationEnd && (
+			{animationEnd ? (
 				<p
 					className={`-mt-4 font-bold ml-[150px] animate-fade-down`}
 				>
 					Scroll to check us out!
 				</p>
-			)}
+			) : (
+                // Make sure the page doesn't shift when the text appears
+                <p className="hidden">Hidden</p>
+            )}
 		</>
 	);
 }

@@ -80,7 +80,6 @@ export default function Home() {
 						className=" absolute bottom-4 right-4"
 						width={650}
 					/>
-                    
 				</div>
 			</div>
 
