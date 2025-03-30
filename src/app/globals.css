@@ -1,0 +1,103 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "tailwindcss-animated";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
+	--color-ring: var(--ring);
+	--color-chart-1: var(--chart-1);
+	--color-chart-2: var(--chart-2);
+	--color-chart-3: var(--chart-3);
+	--color-chart-4: var(--chart-4);
+	--color-chart-5: var(--chart-5);
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+}
+
+/* Other Primary: hsl(10, 80%, 57%) */
+
+:root {
+	--radius: 0.5rem;
+	--background: hsl(9, 55%, 100%);
+	--foreground: hsl(9, 69%, 4%);
+	--card: hsl(0, 0%, 99%);
+	--card-foreground: hsl(9, 69%, 3%);
+	--popover: hsl(0, 0%, 99%);
+	--popover-foreground: hsl(9, 69%, 3%);
+	--primary: hsl(10, 85%, 61%);
+	--primary-foreground: hsl(9, 0%, 100%);
+	--secondary: hsl(164.73, 41.35%, 26.08%);
+	--secondary-foreground: hsl(31.7, 0%, 100%);
+	--muted: hsl(339, 12%, 94%);
+	--muted-foreground: hsl(339, 15%, 31%);
+	--accent: hsl(40.61, 90.11%, 64.31%);
+	--accent-foreground: hsl(39, 0%, 100%);
+	--destructive: hsl(4.53, 94.87%, 37.89%);
+	--destructive-foreground: hsl(31.7, 0%, 100%);
+	--border: hsl(9, 7%, 90%);
+	--input: hsl(9, 7%, 90%);
+	--ring: hsl(10, 80%, 57%);
+	--chart-1: hsl(10, 80%, 57%);
+	--chart-2: hsl(339, 100%, 62%);
+	--chart-3: hsl(39, 100%, 62%);
+	--chart-4: hsl(339, 100%, 65%);
+	--chart-5: hsl(9, 103%, 62%);
+}
+
+.dark {
+	--background: hsl(9, 52%, 1%);
+	--foreground: hsl(9, 37%, 100%);
+	--card: hsl(9, 0%, 0%);
+	--card-foreground: hsl(0, 0%, 100%);
+	--popover: hsl(18.11, 0%, 0%);
+	--popover-foreground: hsl(0, 0%, 100%);
+	--primary: hsl(10, 80%, 57%);
+	--primary-foreground: hsl(9, 0%, 100%);
+	--secondary: hsl(164.73, 41.35%, 26.08%);
+	--secondary-foreground: hsl(0, 0%, 100%);
+	--muted: hsl(24.91, 0%, 12.31%);
+	--muted-foreground: hsl(339, 15%, 69%);
+	--accent: hsl(39, 100%, 62%);
+	--accent-foreground: hsl(39, 0%, 100%);
+	--destructive: hsl(18, 97%, 53%);
+	--destructive-foreground: hsl(0, 0%, 100%);
+	--border: hsl(9, 7%, 11%);
+	--input: hsl(9, 7%, 11%);
+	--ring: hsl(10, 80%, 57%);
+	--chart-1: hsl(10, 80%, 57%);
+	--chart-2: hsl(339, 100%, 62%);
+	--chart-3: hsl(39, 100%, 62%);
+	--chart-4: hsl(339, 100%, 65%);
+	--chart-5: hsl(9, 103%, 62%);
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+}
+
