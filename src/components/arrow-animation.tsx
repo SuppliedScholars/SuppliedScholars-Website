@@ -44,24 +44,25 @@ export default function ArrowAnimation() {
 	}, [dotLottie]);
 
 	return (
-		<>
+		<div className="absolute bottom-10 left-1/6">
+            {/* Scale-x-[-1] is used to horizontally reflect the animation */}
 			<LottieWrapper
 				src="/lottie/ArrowAnimation.lottie"
 				autoplay
-				className="w-[600px] rotate-180 scale-x-[-1] ml-[150px] mt-[50px]"
+				className="w-[600px] rotate-180 scale-x-[-1]"
 				dotLottieRefCallback={dotLottieRefCallback}
 			/>
 
 			{animationEnd ? (
 				<p
-					className={`-mt-4 font-bold ml-[150px] animate-fade-down`}
+					className={`-mt-4 font-bold animate-fade-down`}
 				>
 					Scroll to check us out!
 				</p>
 			) : (
                 // Make sure the page doesn't shift when the text appears
-                <p className="hidden">Hidden</p>
+                <p className="text-transparent -mt-4 font-bold">Hidden</p>
             )}
-		</>
+		</div>
 	);
 }

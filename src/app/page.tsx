@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 function LandingPageHeader() {
 	return (
-		<div className="bg-card h-16 flex flex-row items-center px-6 w-full justify-between text-primary flex-none">
+		<div className="bg-card h-16 flex flex-row items-center px-6 w-full justify-between text-primary">
 			{/* Logo */}
 			<div className="basis-1/3 ">
 				<div className="size-10 bg-primary rounded-full"></div>
