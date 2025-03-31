@@ -5,15 +5,15 @@ function LandingPageHeader() {
 	return (
 		<div className="bg-card h-16 flex flex-row items-center px-6 w-full justify-between text-primary">
 			{/* Logo */}
-			<div className="basis-1/3 ">
+			<div className="basis-1/3 md:flex hidden ">
 				<div className="size-10 bg-primary rounded-full"></div>
 			</div>
 
-			<p className="basis-1/3 flex justify-center font-bold text-2xl ">
+			<p className="basis-1/2 md:basis-1/3 flex md:justify-center font-bold text-2xl ">
 				Supplied Scholars
 			</p>
 
-			<div className="flex-row font-semibold basis-1/3 flex justify-end text-md">
+			<div className="flex-row font-semibold basis-1/2 md:basis-1/3 flex justify-end text-md">
 				<Button
 					variant="link"
 					className="text-md rounded-full cursor-pointer"
@@ -43,12 +43,12 @@ export default function Home() {
 			<div className="flex flex-col h-screen">
 				<LandingPageHeader />
 
-				<div className="flex-grow bg-primary p-20 pb-0 text-white flex flex-col gap-6 relative">
+				<div className="flex-grow bg-primary py-10 sm:py-15 md:py-20 lg:px-20 px-5 pb-0 text-white flex flex-col gap-6 relative">
 					<div>
-						<p className="text-[90px] font-semibold ">
+						<p className="text-5xl sm:text-7xl lg:leading-normal lg:text-[90px] font-semibold ">
 							Opportunity For
 						</p>
-						<p className="text-[110px] font-bold text-accent leading-10 mb-8">
+						<p className="text-7xl sm:text-8xl lg:text-[110px] font-bold text-accent leading-14 lg:leading-10 lg:mb-8">
 							Everyone
 						</p>
 					</div>
@@ -77,8 +77,8 @@ export default function Home() {
 					<img
 						src="/SchoolGraphic.png"
 						alt="School Graphic"
-						className=" absolute bottom-4 right-4"
-						width={650}
+						className=" absolute bottom-4 right-4 w-[350] sm:w-[400] lg:w-[650] max-w-screen"
+						// width={650}
 					/>
 				</div>
 			</div>

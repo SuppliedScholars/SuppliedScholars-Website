@@ -44,7 +44,7 @@ export default function ArrowAnimation() {
 	}, [dotLottie]);
 
 	return (
-		<div className="absolute bottom-10 left-1/6">
+		<div className="absolute bottom-10 xl:left-1/6 left-10 xl:scale-none scale-75 lg:block hidden">
             {/* Scale-x-[-1] is used to horizontally reflect the animation */}
 			<LottieWrapper
 				src="/lottie/ArrowAnimation.lottie"
@@ -55,7 +55,7 @@ export default function ArrowAnimation() {
 
 			{animationEnd ? (
 				<p
-					className={`-mt-4 font-bold animate-fade-down`}
+					className={`-mt-4 font-bold animate-fade-down xl:scale-none scale-125`}
 				>
 					Scroll to check us out!
 				</p>
