@@ -84,6 +84,7 @@ export default function Home() {
 			</div>
 
 			<div>About us</div>
+            <img src="/king.png" className=" shadow-2xl border-border border-2 m-2"/>
 		</>
 	);
 }
