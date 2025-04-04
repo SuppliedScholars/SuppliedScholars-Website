@@ -40,7 +40,7 @@ function LandingPageHeader() {
 export default function Home() {
 	return (
 		<>
-			<div className="flex flex-col h-dvh">
+			<div className="flex flex-col h-svh">
 				<LandingPageHeader />
 
 				<div className="flex-grow bg-primary py-10 sm:py-15 md:py-20 lg:px-20 px-5 pb-0 text-white flex flex-col gap-6 relative">
