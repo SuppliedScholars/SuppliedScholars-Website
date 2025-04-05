@@ -112,8 +112,8 @@ export default function Home() {
 			</div>
 
 			{/* Height of screen - the header height */}
-			<div className="h-svh bg-primary w-full flex flex-row pt-10 pl-15 text-white">
-				<div className="basis-3/7 gap-12 flex flex-col pr-6">
+			<div className="h-svh bg-primary w-full flex flex-row pl-15 text-white">
+				<div className="basis-3/7 gap-12 flex flex-col pr-6 pt-4">
 					<HeaderText text="Why?" />
 
 					<div className="">
