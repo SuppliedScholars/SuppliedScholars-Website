@@ -113,11 +113,11 @@ export default function Home() {
 
 			{/* Height of screen - the header height */}
 			<div className="h-svh bg-primary w-full flex flex-row pl-15 text-white">
-				<div className="basis-3/7 gap-12 flex flex-col pr-6 pt-4">
+				<div className="basis-3/7 flex flex-col pr-6 pt-4">
 					<HeaderText text="Why?" />
 
-					<div className="">
-						<div className="w-full flex flex-row justify-between items-center">
+					<div className="flex flex-col h-11/12">
+						<div className="w-full flex flex-row justify-between items-center basis-1/3">
 							<CircleWithText
 								text="1"
 								className="-translate-y-1 -translate-x-0.5"
@@ -132,7 +132,7 @@ export default function Home() {
 							</p>
 						</div>
 
-						<div className="w-full flex flex-row justify-between items-center">
+						<div className="w-full flex flex-row justify-between items-center basis-1/3">
 							<p className="w-[400px] text-2xl font-bold">
 								The average teacher spends
 								<span className="underline">
@@ -148,7 +148,7 @@ export default function Home() {
 							/>
 						</div>
 
-						<div className="w-full flex flex-row justify-between items-center">
+						<div className="w-full flex flex-row justify-between items-center basis-1/3">
 							<CircleWithText
 								text="3"
 								className="-translate-y-2"
