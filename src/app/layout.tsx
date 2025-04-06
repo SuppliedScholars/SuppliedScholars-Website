@@ -12,7 +12,26 @@ const inter = Inter({
 export const metadata: Metadata = {
 	title: "Supplied Scholars",
 	description: "Resources for students",
+    metadataBase: new URL("https://suppliedscholars.com/"),
+    openGraph: {
+		type: "website",
+		url: "https://suppliedscholars.com/",
+		title: "Supplied Scholars",
+		description: "Supplied Scholars is a non-profit based in Washington State dedicated to our goal of making education accessible for all",
+        images: [
+            {
+                url: "https://suppliedscholars.com/SchoolGraphic.png",
+            },
+        ],
+	},
 };
+
+// export const metadata: Metadata = {
+	
+// 	title: "Recipes Plus",
+// 	description: "Recipe search engine",
+
+// };
 
 export default function RootLayout({
 	children,
