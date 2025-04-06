@@ -1,6 +1,5 @@
 "use client";
 
-
 /*
  This whole component is really fucked
  Lottie is basically a wrapper for playing videos from .lottie files
@@ -19,7 +18,7 @@ import { DotLottie } from "@lottiefiles/dotlottie-react";
 
 export default function ArrowAnimation() {
 	const [animationEnd, setAnimationEnd] = useState(false);
-	const [dotLottie, setDotLottie] = useState<DotLottie| null>(null);
+	const [dotLottie, setDotLottie] = useState<DotLottie | null>(null);
 
 	const dotLottieRefCallback = (dotLottie: DotLottie) => {
 		setDotLottie(dotLottie);
@@ -27,9 +26,9 @@ export default function ArrowAnimation() {
 
 	useEffect(() => {
 		function onPlay() {
-            setTimeout(() => {
-                setAnimationEnd(true);
-            }, 400);
+			setTimeout(() => {
+				setAnimationEnd(true);
+			}, 400);
 		}
 
 		if (dotLottie) {
@@ -44,25 +43,25 @@ export default function ArrowAnimation() {
 	}, [dotLottie]);
 
 	return (
-		<div className="absolute bottom-10 xl:left-1/6 left-10 xl:scale-none scale-75 lg:block hidden">
-            {/* Scale-x-[-1] is used to horizontally reflect the animation */}
+		<div className="absolute bottom-10 left-10 hidden scale-75 lg:block xl:left-1/6 xl:scale-none">
+			{/* Scale-x-[-1] is used to horizontally reflect the animation */}
 			<LottieWrapper
 				src="/lottie/ArrowAnimation.lottie"
 				autoplay
-				className="w-[600px] rotate-180 scale-x-[-1]"
+				className="w-[600px] scale-x-[-1] rotate-180"
 				dotLottieRefCallback={dotLottieRefCallback}
 			/>
 
 			{animationEnd ? (
 				<p
-					className={`-mt-4 font-bold animate-fade-down xl:scale-none scale-125`}
+					className={`animate-fade-down -mt-4 scale-125 font-bold xl:scale-none`}
 				>
 					Scroll to check us out!
 				</p>
 			) : (
-                // Make sure the page doesn't shift when the text appears
-                <p className="text-transparent -mt-4 font-bold">Hidden</p>
-            )}
+				// Make sure the page doesn't shift when the text appears
+				<p className="-mt-4 font-bold text-transparent">Hidden</p>
+			)}
 		</div>
 	);
 }

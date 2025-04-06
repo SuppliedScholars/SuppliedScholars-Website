@@ -21,19 +21,16 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-            <body className={`${inter.variable} antialiased`}>
+			<body className={`${inter.variable} antialiased`}>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="light"
 					enableSystem={false}
 					disableTransitionOnChange
 				>
-
 					{children}
-
 				</ThemeProvider>
-                </body>
-
+			</body>
 		</html>
 	);
 }
