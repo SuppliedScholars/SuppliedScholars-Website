@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 		type: "website",
 		url: "https://suppliedscholars.com/",
 		title: "Supplied Scholars",
-		description: "Supplied Scholars is a non-profit based in Washington State dedicated to our goal of making education accessible for all",
+		description: "Supplied Scholars is a non-profit based in Washington State dedicated to our goal of making education accessible for all.",
         images: [
             {
                 url: "https://suppliedscholars.com/Banner.png",
