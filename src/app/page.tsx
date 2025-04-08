@@ -57,7 +57,7 @@ function LandingPageContent() {
 		<div className="bg-primary relative flex flex-grow flex-col gap-6 px-5 py-10 pb-0 text-white sm:py-15 md:py-20 lg:px-20">
 			<div>
 				<HeaderText text="Opportunity For" minSize="text-5xl" />
-				<p className="text-accent text-6xl leading-14 font-bold md:mb-2 md:text-8xl md:leading-18 lg:text-[110px]">
+				<p className="text-accent text-6xl leading-14 font-bold md:mb-2 md:text-8xl md:leading-18 lg:leading-12 lg:mb-8 lg:text-[110px]">
 					Everyone
 				</p>
 			</div>
