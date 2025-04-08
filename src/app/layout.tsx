@@ -26,12 +26,6 @@ export const metadata: Metadata = {
 	},
 };
 
-// export const metadata: Metadata = {
-	
-// 	title: "Recipes Plus",
-// 	description: "Recipe search engine",
-
-// };
 
 export default function RootLayout({
 	children,
@@ -40,7 +34,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={`${inter.variable} antialiased`}>
+			<body className={`${inter.variable} antialiased bg-primary`}>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="light"

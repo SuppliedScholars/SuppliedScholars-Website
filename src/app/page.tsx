@@ -104,7 +104,7 @@ function CircleWithText({
 		<div className="flex size-42 shrink-0 items-center justify-center rounded-full bg-white md:size-48">
 			<p
 				className={cn(
-					"text-primary text-8xl font-bold md:text-9xl",
+					"text-primary text-8xl font-bold md:text-9xl leading-1",
 					className,
 				)}
 			>
@@ -168,12 +168,13 @@ export default function Home() {
 					<HeaderText text="Why?" minSize="text-6xl" />
 
 					<div className="flex min-h-11/12 flex-col gap-8 py-8">
+                        {/* This text is messed up because different fonts and devices display the text differently */}
 						<CircleInfoComponent
 							startText="96% of teachers "
 							underlineText="purchase school supplies"
 							endText=" so their students don’t go without"
 							number="1"
-							numberTranslate="-translate-x-0.5 -translate-y-1"
+							numberTranslate="lg:-translate-x-0.5 lg:-translate-y-1"
 						/>
 
 						<CircleInfoComponent
@@ -182,16 +183,16 @@ export default function Home() {
 							endText=" each year on classroom supplies"
 							reverse={true}
 							number="2"
-							numberTranslate="-translate-y-2"
+							numberTranslate="lg:-translate-y-2"
 						/>
 
 						{/* https://www.seattletimes.com/education-lab/seattle-public-schools-faces-millions-in-budget-cuts/#:~:text=Seattle%20Public%20Schools%20is%20grappling,and%20lead%20to%20job%20cuts. */}
 						<CircleInfoComponent
-							startText="Seattle Public Schools is grappling with a budget defecit of more than "
+							startText="Seattle Public Schools is grappling with a budget deficit of more than "
 							underlineText="94$ million dollars"
 							endText="."
 							number="3"
-							numberTranslate="-translate-y-2 translate-x-0.5"
+							numberTranslate="lg:-translate-y-2 translate-x-0.5"
 						/>
 					</div>
 				</div>
