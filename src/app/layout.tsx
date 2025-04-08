@@ -12,20 +12,20 @@ const inter = Inter({
 export const metadata: Metadata = {
 	title: "Supplied Scholars",
 	description: "Resources for students",
-    metadataBase: new URL("https://suppliedscholars.com/"),
-    openGraph: {
+	metadataBase: new URL("https://suppliedscholars.com/"),
+	openGraph: {
 		type: "website",
 		url: "https://suppliedscholars.com/",
 		title: "Supplied Scholars",
-		description: "Supplied Scholars is a non-profit based in Washington State dedicated to our goal of making education accessible for all.",
-        images: [
-            {
-                url: "https://suppliedscholars.com/Banner.png",
-            },
-        ],
+		description:
+			"Supplied Scholars is a non-profit based in Washington State dedicated to our goal of making education accessible for all.",
+		images: [
+			{
+				url: "https://suppliedscholars.com/Banner.png",
+			},
+		],
 	},
 };
-
 
 export default function RootLayout({
 	children,
@@ -34,7 +34,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={`${inter.variable} antialiased bg-primary`}>
+			<body className={`${inter.variable} bg-primary antialiased`}>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="light"

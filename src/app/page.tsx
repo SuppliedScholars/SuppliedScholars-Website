@@ -58,7 +58,7 @@ function LandingPageContent() {
 		<div className="bg-primary relative flex flex-grow flex-col gap-6 px-5 py-10 pb-0 text-white sm:py-15 md:py-20 lg:px-20">
 			<div>
 				<HeaderText text="Opportunity For" minSize="text-5xl" />
-				<p className="text-accent text-6xl leading-14 font-bold md:mb-2 md:text-8xl md:leading-18 lg:leading-12 lg:mb-8 lg:text-[110px]">
+				<p className="text-accent text-6xl leading-14 font-bold md:mb-2 md:text-8xl md:leading-18 lg:mb-8 lg:text-[110px] lg:leading-12">
 					Everyone
 				</p>
 			</div>
@@ -87,7 +87,7 @@ function LandingPageContent() {
 				alt="School Graphic"
 				className="xs:w-[350px] absolute right-4 bottom-4 w-[200px] max-w-screen sm:w-[400px] lg:w-[650px]"
 				width={822}
-                height={670}
+				height={670}
 			/>
 		</div>
 	);
@@ -105,7 +105,7 @@ function CircleWithText({
 		<div className="flex size-42 shrink-0 items-center justify-center rounded-full bg-white md:size-48">
 			<p
 				className={cn(
-					"text-primary text-8xl font-bold md:text-9xl leading-1",
+					"text-primary text-8xl leading-1 font-bold md:text-9xl",
 					className,
 				)}
 			>
@@ -169,7 +169,7 @@ export default function Home() {
 					<HeaderText text="Why?" minSize="text-6xl" />
 
 					<div className="flex min-h-11/12 flex-col gap-8 py-8">
-                        {/* This text is messed up because different fonts and devices display the text differently */}
+						{/* This text is messed up because different fonts and devices display the text differently */}
 						<CircleInfoComponent
 							startText="96% of teachers "
 							underlineText="purchase school supplies"
@@ -197,21 +197,14 @@ export default function Home() {
 						/>
 					</div>
 				</div>
-				<div className="hidden max-w-4/7 w-full shrink lg:block">
-					{/* <img
+				<div className="hidden w-full max-w-4/7 shrink lg:block">
+					<Image
 						src="/Classroom.jpg"
+						alt="Classroom"
+						width={7008}
+						height={4672}
 						className="size-full rounded-l-full object-cover"
-					/> */}
-                    {/* <div className="size-full rounded-l-full"> */}
-                        <Image
-                            src="/Classroom.jpg"
-                            alt="Classroom"
-                            width={7008}
-                            height={4672}
-                            className="rounded-l-full size-full object-cover"
-                        />
-                    {/* </div> */}
-
+					/>
 				</div>
 			</div>
 		</>
