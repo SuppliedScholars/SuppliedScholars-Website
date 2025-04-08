@@ -1,6 +1,7 @@
 import ArrowAnimation from "@/components/arrow-animation";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 function LandingPageHeader() {
 	return (
@@ -81,12 +82,12 @@ function LandingPageContent() {
 
 			<ArrowAnimation />
 
-			{/* eslint-disable-next-line @next/next/no-img-element */}
-			<img
+			<Image
 				src="/SchoolGraphic.png"
 				alt="School Graphic"
 				className="xs:w-[350px] absolute right-4 bottom-4 w-[200px] max-w-screen sm:w-[400px] lg:w-[650px]"
-				// width={650}
+				width={822}
+                height={670}
 			/>
 		</div>
 	);
@@ -196,11 +197,21 @@ export default function Home() {
 						/>
 					</div>
 				</div>
-				<div className="hidden max-w-4/7 shrink lg:block">
-					<img
+				<div className="hidden max-w-4/7 w-full shrink lg:block">
+					{/* <img
 						src="/Classroom.jpg"
 						className="size-full rounded-l-full object-cover"
-					/>
+					/> */}
+                    {/* <div className="size-full rounded-l-full"> */}
+                        <Image
+                            src="/Classroom.jpg"
+                            alt="Classroom"
+                            width={7008}
+                            height={4672}
+                            className="rounded-l-full size-full object-cover"
+                        />
+                    {/* </div> */}
+
 				</div>
 			</div>
 		</>
