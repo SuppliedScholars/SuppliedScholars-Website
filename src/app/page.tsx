@@ -1,7 +1,8 @@
 import ArrowAnimation from "@/components/arrow-animation";
 import { CircleInformationComponents } from "@/components/pages/landingpage/circle-information";
+import DonationInformation from "@/components/pages/landingpage/donation-information";
+import HeaderText from "@/components/pages/landingpage/header-text";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 function LandingPageHeader() {
@@ -40,19 +41,7 @@ function LandingPageHeader() {
 	);
 }
 
-function HeaderText({ text, minSize }: { text: string; minSize: string }) {
-	return (
-		// MinSize eg text-5xl
-		<p
-			className={cn(
-				minSize,
-				"font-semibold md:text-7xl lg:text-[90px] lg:leading-normal",
-			)}
-		>
-			{text}
-		</p>
-	);
-}
+
 
 function LandingPageContent() {
 	return (
@@ -96,15 +85,15 @@ function LandingPageContent() {
 
 export default function Home() {
 	return (
-		<>
+		<div className="flex h-max flex-col">
 			<div className="flex h-svh flex-col">
 				<LandingPageHeader />
 				<LandingPageContent />
 			</div>
 
 			{/* Height of screen - the header height */}
-			<div className="bg-primary flex min-h-svh w-full flex-row text-white md:px-15 lg:pr-0 lg:pl-15">
-				<div className="flex w-full flex-col px-6 lg:basis-3/7">
+			<div className="bg-primary flex h-svh min-h-svh w-full flex-row text-white md:px-15 lg:pr-0 lg:pl-15">
+				<div className="flex h-full w-full flex-col px-6 lg:basis-3/7">
 					<HeaderText text="Why?" minSize="text-6xl" />
 
 					<CircleInformationComponents />
@@ -119,6 +108,12 @@ export default function Home() {
 					/>
 				</div>
 			</div>
-		</>
+
+			
+				
+
+                    <DonationInformation />
+
+		</div>
 	);
 }

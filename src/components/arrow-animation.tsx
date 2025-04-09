@@ -9,7 +9,7 @@
 
  Basically all this component does its:
     1. Waits for the animation to load
-    2. Makes a setTimeout to show the text after 1 second
+    2. Makes a setTimeout to show the text after .4 second
 */
 
 import { useEffect, useState } from "react";

@@ -1,8 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { animate, createScope, onScroll, Scope } from "animejs";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 /// ClassName is applied to the text inside the circle
 function CircleWithText({
@@ -68,33 +67,48 @@ function CircleInfoComponent({
 
 export function CircleInformationComponents() {
 	const root = useRef<HTMLDivElement | null>(null);
-	const scope = useRef<Scope | null>(null);
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	const scope = useRef< null>(null);
 
-	useEffect(() => {
-		if (!root.current) return;
+	// useEffect(() => {
+	// 	if (!root.current) return;
 
-		scope.current = createScope({
-			root: root as React.RefObject<HTMLElement>,
-		}).add(() => {
-			for (let i = 0; i <= 3; i++) {
-				animate(`.circle-info:nth-of-type(${i})`, {
-					y: [{ from: "-100px", to: "0px" }],
-					opacity: [{ from: 0, to: 1 }],
-					ease: "outQuad",
-					duration: 800,
-					autoplay: onScroll({
-						container: ".circle-info-container",
-					}),
-				});
-			}
-		});
+	// 	scope.current = createScope({
+	// 		root: root as React.RefObject<HTMLElement>,
+	// 		mediaQueries: {
+	// 			isSmall: "(max-width: 1024px)",
+	// 		},
+	// 	}).add((scope) => {
+	// 		const { isSmall } = scope.matches;
 
-		return () => scope.current?.revert();
-	}, []);
+	// 		for (let i = 0; i <= 3; i++) {
+	// 			// Translate the text to the left or right depending on the index
+	// 			const xTranslate = i % 2 === 0 ? "-200px" : "200px";
+
+	// 			// Animation down on large screen, animate left or right on small screen
+	// 			animate(`.circle-info:nth-of-type(${i})`, {
+	// 				x: isSmall
+	// 					? [{ from: xTranslate, to: "0px" }]
+	// 					: [{ from: "0px", to: "0px" }],
+	// 				y: isSmall
+	// 					? [{ from: "0px", to: "0px" }]
+	// 					: [{ from: "-100", to: "0px" }],
+	// 				opacity: [{ from: 0, to: 1 }],
+	// 				ease: "outQuad",
+	// 				duration: 800,
+	// 				autoplay: onScroll({
+	// 					container: ".circle-info-container",
+	// 				}),
+	// 			});
+	// 		}
+	// 	});
+
+	// 	return () => scope.current?.revert();
+	// }, []);
 
 	return (
 		<div
-			className="circle-info-container flex min-h-11/12 flex-col gap-8 py-8"
+			className="circle-info-container flex min-h-11/12 flex-col gap-8 overflow-clip py-8 lg:overflow-auto"
 			ref={root}
 		>
 			{/* This text is messed up because different fonts and devices display the text differently */}
