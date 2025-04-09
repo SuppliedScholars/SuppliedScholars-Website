@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { animate, createScope, createSpring, onScroll, Scope } from "animejs";
+import { animate, createScope, onScroll, Scope } from "animejs";
 import { useEffect, useRef } from "react";
 
 /// ClassName is applied to the text inside the circle
@@ -71,36 +71,32 @@ export function CircleInformationComponents() {
 	const scope = useRef<Scope | null>(null);
 
 	useEffect(() => {
-		// if (!root.current) return;
+		if (!root.current) return;
 
-		// const rootElement = root.current;
-
-		scope.current = createScope({ root }).add((scope) => {
-
-            for (let i = 0; i <= 3; i++) {
-
-                animate(`.circle-info:nth-of-type(${i})`, {
-                    y: [
-                        { from: '-100px', to: '0px' },
-                    ],
-                    opacity: [
-                        { from: 0, to: 1 },
-                    ],
-                    ease: 'outQuad',
-                    duration: 800,
-                    autoplay: onScroll({
-                        container: ".circle-info-container",
-                    }),
-                });
-
-            }
-
-			return () => scope.current.revert();
+		scope.current = createScope({
+			root: root as React.RefObject<HTMLElement>,
+		}).add(() => {
+			for (let i = 0; i <= 3; i++) {
+				animate(`.circle-info:nth-of-type(${i})`, {
+					y: [{ from: "-100px", to: "0px" }],
+					opacity: [{ from: 0, to: 1 }],
+					ease: "outQuad",
+					duration: 800,
+					autoplay: onScroll({
+						container: ".circle-info-container",
+					}),
+				});
+			}
 		});
+
+		return () => scope.current?.revert();
 	}, []);
 
 	return (
-		<div className="circle-info-container flex min-h-11/12 flex-col gap-8 py-8" ref={root}>
+		<div
+			className="circle-info-container flex min-h-11/12 flex-col gap-8 py-8"
+			ref={root}
+		>
 			{/* This text is messed up because different fonts and devices display the text differently */}
 			{/* So we just have it not be translated on mobile (i think it covers most cases) */}
 

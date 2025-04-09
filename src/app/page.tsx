@@ -94,9 +94,6 @@ function LandingPageContent() {
 	);
 }
 
-
-
-
 export default function Home() {
 	return (
 		<>
@@ -110,11 +107,7 @@ export default function Home() {
 				<div className="flex w-full flex-col px-6 lg:basis-3/7">
 					<HeaderText text="Why?" minSize="text-6xl" />
 
-					
-
-						<CircleInformationComponents />
-                        
-
+					<CircleInformationComponents />
 				</div>
 				<div className="hidden w-full max-w-4/7 shrink lg:block">
 					<Image
