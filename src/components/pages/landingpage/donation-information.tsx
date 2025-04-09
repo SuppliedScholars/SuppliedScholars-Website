@@ -66,20 +66,16 @@ export default function DonationInformation() {
 
 	return (
 		<div className="flex h-max w-full flex-col" ref={root}>
-			<div className="pinned-container bg-primary mt-12 flex h-svh min-h-svh w-full flex-row pt-4 pb-12 text-white">
-				<div className="donation-information-root flex w-full flex-col">
-					<div className="px-6">
-						<HeaderText
-							text={`Where? ${devTime.toFixed(2)}s`}
-							minSize="text-6xl"
-						/>
-						<p className="ml-2 text-[18px] font-semibold md:text-lg">
-							Where do my donations go?
-						</p>
-					</div>
+			<div className="pinned-container bg-primary flex  min-h-svh w-full flex-row text-white">
+				<div className="donation-information-root flex w-full flex-col px-6 pb-6">
+					<HeaderText
+						text={`How? ${devTime.toFixed(2)}s`}
+						minSize="text-6xl"
+						className="mb-4"
+					/>
 
-					<div className="mt-auto flex flex-col-reverse items-center gap-4 lg:flex-row lg:items-start lg:pl-6 lg:text-left">
-						<div className="bg-card w-[390px] rounded-lg">
+					<div className="mt-auto flex flex-col-reverse items-center gap-4 md:flex-row md:items-start lg:text-left">
+						<div className="bg-card max-w-[390px] w-full overflow-hidden rounded-lg">
 							<DotLottieReact
 								dotLottieRefCallback={moneyLottieRefCallback}
 								src="/lottie/CashAnimation.lottie"
@@ -87,7 +83,7 @@ export default function DonationInformation() {
 							/>
 						</div>
 
-						<p className="w-[390px] text-xl font-bold md:text-2xl lg:w-[500px]">
+						<p className="max-w-[390px] font-bold md:text-2xl lg:w-[500px] lg:text-xl">
 							When you donate to Supplied Scholars, your
 							contribution first goes to our dedicated financial
 							team. <br />

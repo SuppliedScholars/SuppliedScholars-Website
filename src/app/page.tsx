@@ -43,7 +43,7 @@ function LandingPageHeader() {
 
 function LandingPageContent() {
 	return (
-		<div className="bg-primary relative flex flex-grow flex-col gap-6 px-5 py-10 pb-0 text-white sm:py-15 md:py-20 lg:px-20">
+		<div className="bg-primary relative flex flex-grow flex-col gap-6 px-5 py-10 pb-0 text-white sm:py-15  lg:px-20">
 			<div>
 				<HeaderText text="Opportunity For" minSize="text-5xl" />
 				<p className="text-accent text-6xl leading-14 font-bold md:mb-2 md:text-8xl md:leading-18 lg:mb-8 lg:text-[110px] lg:leading-12">
@@ -51,7 +51,7 @@ function LandingPageContent() {
 				</p>
 			</div>
 
-			<p className="w-[340px] text-[18px] font-semibold md:text-lg">
+			<p className="max-w-[340px] text-[18px] font-semibold md:text-lg">
 				Supplied Scholars is a non-profit based in Washington State
 				dedicated to our goal of making education accessible for all
 			</p>
@@ -83,26 +83,25 @@ function LandingPageContent() {
 
 export default function Home() {
 	return (
-		<div className="flex h-max flex-col">
+		<div className="flex h-max flex-col gap-8">
 			<div className="flex h-svh flex-col">
 				<LandingPageHeader />
 				<LandingPageContent />
 			</div>
 
-			{/* Height of screen - the header height */}
-			<div className="bg-primary flex h-svh min-h-svh w-full flex-row text-white md:px-15 lg:pr-0 lg:pl-15">
-				<div className="flex h-full w-full flex-col px-6 lg:basis-3/7">
-					<HeaderText text="Why?" minSize="text-6xl" />
+			<div className="bg-primary flex lg:gap-4 w-full flex-row text-white px-4 lg:px-0 lg:pl-6 ">
+				<div className="flex grow  flex-col w-3/7">
+					<HeaderText text="Why?" minSize="text-6xl" className=" mb-8" />
 
 					<CircleInformationComponents />
 				</div>
-				<div className="hidden w-full max-w-4/7 shrink lg:block">
+				<div className="hidden lg:block max-w-4/7 min-h-svh">
 					<Image
 						src="/Classroom.jpg"
 						alt="Classroom"
 						width={7008}
 						height={4672}
-						className="size-full rounded-l-full object-cover"
+						className="rounded-l-full h-full  object-cover "
 					/>
 				</div>
 			</div>

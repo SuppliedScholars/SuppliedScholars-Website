@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { useRef } from "react";
 
 /// ClassName is applied to the text inside the circle
-function CircleWithText({
+function CircleWithNumber({
 	text,
 	className,
 }: {
@@ -40,8 +40,6 @@ function CircleInfoComponent({
 	numberTranslate?: string;
 	reverse?: boolean;
 }) {
-	// const superClass = "flex w-full basis-1/3 flex-col items-center justify-between gap-4 text-center md:flex-row md:gap-0 md:text-left"
-
 	return (
 		<div
 			className={cn(
@@ -49,11 +47,11 @@ function CircleInfoComponent({
 				reverse ? "md:flex-row-reverse" : "md:flex-row",
 			)}
 		>
-			<CircleWithText text={number} className={numberTranslate} />
+			<CircleWithNumber text={number} className={numberTranslate} />
 
 			<p
 				className={cn(
-					"xs:text-2xl max-w-[400px] text-center text-lg font-bold",
+					"xs:text-2xl max-w-[400px] text-center text-lg font-bold pb-4 md:pb-0",
 					reverse ? "md:text-left" : "md:text-right",
 				)}
 			>
@@ -108,7 +106,7 @@ export function CircleInformationComponents() {
 
 	return (
 		<div
-			className="circle-info-container flex min-h-11/12 flex-col gap-8 overflow-clip py-8 lg:overflow-auto"
+			className="circle-info-container flex grow flex-col overflow-clip lg:overflow-auto"
 			ref={root}
 		>
 			{/* This text is messed up because different fonts and devices display the text differently */}
