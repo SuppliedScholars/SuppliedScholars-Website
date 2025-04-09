@@ -66,19 +66,19 @@ export default function DonationInformation() {
 
 	return (
 		<div className="flex h-max w-full flex-col" ref={root}>
-			<div className="pinned-container bg-primary mt-12 flex h-svh min-h-svh w-full flex-row text-white pt-4 pb-12">
+			<div className="pinned-container bg-primary mt-12 flex h-svh min-h-svh w-full flex-row pt-4 pb-12 text-white">
 				<div className="donation-information-root flex w-full flex-col">
-                    <div className="px-6">
-					<HeaderText
-						text={`Where? ${devTime.toFixed(2)}s`}
-						minSize="text-6xl"
-					/>
-					<p className="ml-2 text-[18px] font-semibold md:text-lg">
-						Where do my donations go?
-					</p>
-                    </div>
+					<div className="px-6">
+						<HeaderText
+							text={`Where? ${devTime.toFixed(2)}s`}
+							minSize="text-6xl"
+						/>
+						<p className="ml-2 text-[18px] font-semibold md:text-lg">
+							Where do my donations go?
+						</p>
+					</div>
 
-					<div className="mt-auto flex flex-col-reverse items-center lg:items-start lg:text-left lg:flex-row gap-4 lg:pl-6">
+					<div className="mt-auto flex flex-col-reverse items-center gap-4 lg:flex-row lg:items-start lg:pl-6 lg:text-left">
 						<div className="bg-card w-[390px] rounded-lg">
 							<DotLottieReact
 								dotLottieRefCallback={moneyLottieRefCallback}
@@ -87,10 +87,11 @@ export default function DonationInformation() {
 							/>
 						</div>
 
-						<p className="w-[390px] lg:w-[500px] text-xl md:text-2xl font-bold">
+						<p className="w-[390px] text-xl font-bold md:text-2xl lg:w-[500px]">
 							When you donate to Supplied Scholars, your
 							contribution first goes to our dedicated financial
-							team. <br /><br />  They manage the funds responsibly, ensuring
+							team. <br />
+							<br /> They manage the funds responsibly, ensuring
 							that every dollar is allocated effectively to
 							purchase essential supplies for students.
 						</p>
@@ -98,7 +99,11 @@ export default function DonationInformation() {
 				</div>
 			</div>
 
-			<div className={`h-[${scrollLockHeight}svh]`}></div>
+			<div
+				style={{
+					height: `${scrollLockHeight}svh`,
+				}}
+			></div>
 		</div>
 	);
 }
