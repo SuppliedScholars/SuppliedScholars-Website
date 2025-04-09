@@ -1,6 +1,12 @@
 import { cn } from "@/lib/utils";
 
-export default function  HeaderText({ text, minSize }: { text: string; minSize: string }) {
+export default function HeaderText({
+	text,
+	minSize,
+}: {
+	text: string;
+	minSize: string;
+}) {
 	return (
 		// MinSize eg text-5xl
 		<p

@@ -68,7 +68,7 @@ function CircleInfoComponent({
 export function CircleInformationComponents() {
 	const root = useRef<HTMLDivElement | null>(null);
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const scope = useRef< null>(null);
+	const scope = useRef<null>(null);
 
 	// useEffect(() => {
 	// 	if (!root.current) return;
