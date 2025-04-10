@@ -1,6 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import { useRef } from "react";
 
 /// ClassName is applied to the text inside the circle
@@ -65,48 +67,43 @@ function CircleInfoComponent({
 
 export function CircleInformationComponents() {
 	const root = useRef<HTMLDivElement | null>(null);
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const scope = useRef<null>(null);
 
-	// useEffect(() => {
-	// 	if (!root.current) return;
+    useGSAP(() => {
 
-	// 	scope.current = createScope({
-	// 		root: root as React.RefObject<HTMLElement>,
-	// 		mediaQueries: {
-	// 			isSmall: "(max-width: 1024px)",
-	// 		},
-	// 	}).add((scope) => {
-	// 		const { isSmall } = scope.matches;
+        const isSmall = window.matchMedia("(max-width: 1024px)").matches;
+        const elements: HTMLDivElement[] = gsap.utils.toArray(".circle-info");
+    
+        elements.forEach((el, i) => {
+            const xTranslate = i % 2 === 0 ? "-200px" : "200px";
+    
+            gsap.fromTo(
+                el,
+                {
+                    x: isSmall ? xTranslate : "0px",
+                    y: isSmall ? "0px" : "-100px",
+                    opacity: 0,
+                },
+                {
+                    x: "0px",
+                    y: "0px",
+                    opacity: 1,
+                    duration: 1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: el,
+                        // start: "top 80%",
+                        start: isSmall ? "top bottom" : "top 80%",
+                    },
+                }
+            );
+        });
+        
 
-	// 		for (let i = 0; i <= 3; i++) {
-	// 			// Translate the text to the left or right depending on the index
-	// 			const xTranslate = i % 2 === 0 ? "-200px" : "200px";
-
-	// 			// Animation down on large screen, animate left or right on small screen
-	// 			animate(`.circle-info:nth-of-type(${i})`, {
-	// 				x: isSmall
-	// 					? [{ from: xTranslate, to: "0px" }]
-	// 					: [{ from: "0px", to: "0px" }],
-	// 				y: isSmall
-	// 					? [{ from: "0px", to: "0px" }]
-	// 					: [{ from: "-100", to: "0px" }],
-	// 				opacity: [{ from: 0, to: 1 }],
-	// 				ease: "outQuad",
-	// 				duration: 800,
-	// 				autoplay: onScroll({
-	// 					container: ".circle-info-container",
-	// 				}),
-	// 			});
-	// 		}
-	// 	});
-
-	// 	return () => scope.current?.revert();
-	// }, []);
+    }, { scope: root, dependencies: [] });
 
 	return (
 		<div
-			className="circle-info-container flex grow flex-col overflow-clip lg:overflow-auto"
+			className="circle-info-container flex grow flex-col gap-6"
 			ref={root}
 		>
 			{/* This text is messed up because different fonts and devices display the text differently */}
