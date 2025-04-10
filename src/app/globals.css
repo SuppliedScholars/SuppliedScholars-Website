@@ -8,6 +8,14 @@
 	--breakpoint-xs: 30rem;
 }
 
+.scale-children-115 > * {
+    transform: scale(1.15);
+}
+
+.scale-children-225 > * {
+    transform: scale(2.25);
+}
+
 @theme inline {
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);

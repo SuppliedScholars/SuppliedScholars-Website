@@ -91,7 +91,6 @@ export function CircleInformationComponents() {
                     ease: "power2.out",
                     scrollTrigger: {
                         trigger: el,
-                        // start: "top 80%",
                         start: isSmall ? "top bottom" : "top 80%",
                     },
                 }

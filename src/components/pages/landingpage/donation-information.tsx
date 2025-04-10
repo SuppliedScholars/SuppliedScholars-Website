@@ -6,29 +6,101 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { DotLottie, DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { cn } from "@/lib/utils";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
-const totalLottieFrames = {
-	money: 82,
+const texts = [
+	{
+		title: "Your Donation Supports Our Financial Team",
+		content: (
+			<>
+				When you donate to Supplied Scholars, your contribution first
+				goes to our dedicated financial team. <br />
+				<br /> They manage the funds responsibly, ensuring that every
+				dollar is allocated effectively to purchase essential supplies
+				for students.
+			</>
+		),
+	},
+	{
+		title: "Your Donation Fuels Our Mission",
+		content: (
+			<>
+				Once the funds are in place, our team works hard to purchase and
+				package the necessary school supplies. <br /> <br /> We ensure
+				everything is carefully organized and prepared to meet the needs
+				of students. Every package is assembled with care, ready to make
+				a positive impact in the classroom.
+			</>
+		),
+	},
+	{
+		title: "Shipping Supplies to Schools",
+		content: (
+			<>
+				After the supplies are packaged, we arrange for fast and
+				reliable shipping to schools in need. We make sure the supplies
+				reach the students who need them most, helping them succeed in
+				their education. Your donation directly fuels this vital
+				process!
+			</>
+		),
+	},
+];
+
+type LottieConfig = {
+	src: string;
+	frames: number;
+	className: string;
+};
+
+const lottieConfigs: Record<string, LottieConfig> = {
+	Money: {
+		src: "/lottie/CashAnimation.lottie",
+		frames: 82,
+		className:
+			"w-[400px] scale-children-115 h-[350px] bg-card rounded-lg bg-white overflow-clip pb-4",
+	},
+	Shipment: {
+		src: "/lottie/ShipmentAnimation.lottie",
+		frames: 48,
+		className: "scale-children-225 max-w-[390px] ml-12",
+	},
 };
 
 export default function DonationInformation() {
 	const root = useRef<HTMLDivElement | null>(null);
 
-	const [moneyLottie, setMoneyLottie] = useState<DotLottie | null>(null);
+	const [lottieObject, setLottieObject] = useState<DotLottie | null>(null);
+	const [lottieConfig, setLottieConfig] = useState<LottieConfig>(
+		lottieConfigs.Money,
+	);
+	const [text, setText] = useState(texts[0]);
 	const [devTime, setDevTime] = useState(0);
 
-	const scrollLockHeight = 300; // 300svh
+	const scrollLockHeight = 500; // 300svh
 
-	const moneyLottieRefCallback = (dotLottie: DotLottie) => {
-		setMoneyLottie(dotLottie);
+	const lottieRefCallback = (dotLottie: DotLottie) => {
+		setLottieObject(dotLottie);
 	};
+
+
+    const handleStepChange = (progress: number) => {
+        if (progress < 1.4) {
+            setText(texts[0]);
+            setLottieConfig(lottieConfigs.Money);
+        }
+        else if (progress >= 1 && progress < 5) {
+            setText(texts[1]);
+            setLottieConfig(lottieConfigs.Shipment);
+        }
+    };
 
 	useGSAP(
 		() => {
-			if (!moneyLottie) return;
+			if (!lottieObject) return;
 
 			let progress = 0;
 
@@ -37,13 +109,81 @@ export default function DonationInformation() {
 
 			const moneyLottieProxy = { frame: 0 };
 			tl.to(moneyLottieProxy, {
-				frame: totalLottieFrames.money,
+				frame: lottieConfigs.Money.frames,
 				duration: 1,
 				ease: "none",
 				onUpdate: () => {
-					moneyLottie.setFrame(moneyLottieProxy.frame);
+					lottieObject.setFrame(moneyLottieProxy.frame);
 				},
 			});
+
+			// Fade out lottie background
+			tl.to(".lottie-component", {
+				opacity: 0,
+				duration: 0.4,
+				ease: "power2.out",
+			});
+
+			// Fade out text
+			tl.to(
+				".info-text",
+				{
+					opacity: 0,
+					duration: 0.4,
+					ease: "power2.out",
+					// onStart: () => setText(texts[0]),
+					// onComplete: () => setText(texts[1]),
+				},
+				0.6,
+			);
+
+			// Fade in text
+			tl.to(".info-text", {
+				opacity: 1,
+				duration: 0.4,
+				boxShadow: "0 9px 7px rgb(0 0 0 / 0.1)",
+				border: "rgba(255, 255, 255, 0.4) 2px solid",
+				ease: "power2.out",
+				// onStart: () => setText(texts[1]),
+				// onComplete: () => setText(texts[1]),
+			});
+
+			// Move the text
+			tl.to(".info-text", {
+				x: "50px",
+				y: "-200px",
+				duration: 0.4,
+				ease: "quint.inOut",
+			});
+
+			// Setup the lottie container
+			tl.to(
+				".lottie-component",
+				{
+					opacity: 1,
+					// backgroundColor: "rgba(0, 0, 0, 0)", // Transparent background
+					duration: 0,
+				},
+				"<",
+			);
+
+			const shipmentLottieProxy = { frame: 0 };
+			tl.to(
+				shipmentLottieProxy,
+				{
+					frame: lottieConfigs.Shipment.frames,
+					duration: 1,
+					delay: 1,
+					ease: "none",
+					// onStart: () => {
+					// 	setLottieConfig(lottieConfigs.Shipment);
+					// },
+					onUpdate: () => {
+						lottieObject.setFrame(shipmentLottieProxy.frame);
+					},
+				},
+				"<-=1",
+			);
 
 			ScrollTrigger.create({
 				trigger: ".pinned-container",
@@ -54,20 +194,24 @@ export default function DonationInformation() {
 					const scrollerPos = (self.scroller as Window).scrollY;
 					const startPos = self.start;
 					const currentPos = scrollerPos - startPos;
+                    
 					progress = Math.max(0, currentPos / 1000); // Creating an artifical time value based on the scroll position
 
 					tl.seek(progress, false); // Seek the animation to the current position
 					setDevTime(progress);
+                    handleStepChange(progress); 
 				},
 			});
 		},
-		{ scope: root, dependencies: [moneyLottie] },
+		{ scope: root, dependencies: [lottieObject] },
 	);
+
+	// console.log(lottieConfig)
 
 	return (
 		<div className="flex h-max w-full flex-col" ref={root}>
-			<div className="pinned-container bg-primary flex  min-h-svh w-full flex-row text-white">
-				<div className="donation-information-root flex w-full flex-col px-6 pb-6">
+			<div className="pinned-container bg-primary flex min-h-svh w-full flex-row text-white">
+				<div className="donation-information-root relative flex w-full flex-col overflow-clip px-6 pb-6">
 					<HeaderText
 						text={`How? ${devTime.toFixed(2)}s`}
 						minSize="text-6xl"
@@ -75,23 +219,20 @@ export default function DonationInformation() {
 					/>
 
 					<div className="mt-auto flex flex-col-reverse items-center gap-4 md:flex-row md:items-start lg:text-left">
-						<div className="bg-card max-w-[390px] w-full overflow-hidden rounded-lg">
-							<DotLottieReact
-								dotLottieRefCallback={moneyLottieRefCallback}
-								src="/lottie/CashAnimation.lottie"
-								className="money-lottie -ml-52 w-[800px]"
-							/>
-						</div>
-
-						<p className="max-w-[390px] font-bold md:text-2xl lg:w-[500px] lg:text-xl">
-							When you donate to Supplied Scholars, your
-							contribution first goes to our dedicated financial
-							team. <br />
-							<br /> They manage the funds responsibly, ensuring
-							that every dollar is allocated effectively to
-							purchase essential supplies for students.
-						</p>
+						{/* <div className="w-0 h-min overflow-visible"> */}
+						<DotLottieReact
+							dotLottieRefCallback={lottieRefCallback}
+							src={lottieConfig.src}
+							className={cn(
+								"lottie-component",
+								lottieConfig.className,
+							)}
+						/>
+						{/* </div> */}
 					</div>
+					<p className="info-text absolute bottom-36 max-w-[390px] rounded-md p-2 font-bold md:text-2xl lg:left-[440px] lg:w-[500px] lg:text-xl">
+						{text.content}
+					</p>
 				</div>
 			</div>
 
