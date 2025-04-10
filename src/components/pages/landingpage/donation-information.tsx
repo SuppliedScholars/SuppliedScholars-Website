@@ -41,10 +41,10 @@ const texts = [
 		content: (
 			<>
 				After the supplies are packaged, we arrange for fast and
-				reliable shipping to schools in need. We make sure the supplies
-				reach the students who need them most, helping them succeed in
-				their education. Your donation directly fuels this vital
-				process!
+				reliable shipping to schools in need. <br /> <br /> We make sure
+				the supplies reach the students who need them most, helping them
+				succeed in their education. Your donation directly fuels this
+				vital process!
 			</>
 		),
 	},
@@ -53,6 +53,7 @@ const texts = [
 type LottieConfig = {
 	src: string;
 	frames: number;
+	duration: number;
 	className: string;
 };
 
@@ -60,13 +61,22 @@ const lottieConfigs: Record<string, LottieConfig> = {
 	Money: {
 		src: "/lottie/CashAnimation.lottie",
 		frames: 82,
+		duration: 1.4,
 		className:
 			"w-[400px] scale-children-115 h-[350px] bg-card rounded-lg bg-white overflow-clip pb-4",
 	},
 	Shipment: {
 		src: "/lottie/ShipmentAnimation.lottie",
 		frames: 48,
+		duration: 1,
 		className: "scale-children-225 max-w-[390px] ml-12",
+	},
+	Truck: {
+		src: "/lottie/TruckAnimation.lottie",
+		frames: 40,
+		duration: 1,
+		// flip horizontally
+		className: "scale-children-115 max-w-[390px] ml-12 -scale-x ",
 	},
 };
 
@@ -78,25 +88,26 @@ export default function DonationInformation() {
 		lottieConfigs.Money,
 	);
 	const [text, setText] = useState(texts[0]);
-	const [devTime, setDevTime] = useState(0);
+	// const [devTime, setDevTime] = useState(0);
 
-	const scrollLockHeight = 500; // 300svh
+	const scrollLockHeight = 450; // 300svh
 
 	const lottieRefCallback = (dotLottie: DotLottie) => {
 		setLottieObject(dotLottie);
 	};
 
-
-    const handleStepChange = (progress: number) => {
-        if (progress < 1.4) {
-            setText(texts[0]);
-            setLottieConfig(lottieConfigs.Money);
-        }
-        else if (progress >= 1 && progress < 5) {
-            setText(texts[1]);
-            setLottieConfig(lottieConfigs.Shipment);
-        }
-    };
+	const handleStepChange = (progress: number) => {
+		if (progress < 1.4) {
+			setText(texts[0]);
+			setLottieConfig(lottieConfigs.Money);
+		} else if (progress >= 1 && progress < 3.2) {
+			setText(texts[1]);
+			setLottieConfig(lottieConfigs.Shipment);
+		} else if (progress >= 3.2 && progress < 5) {
+			setText(texts[2]);
+			setLottieConfig(lottieConfigs.Truck);
+		}
+	};
 
 	useGSAP(
 		() => {
@@ -117,7 +128,7 @@ export default function DonationInformation() {
 				},
 			});
 
-			// Fade out lottie background
+			// Fade out money lottie
 			tl.to(".lottie-component", {
 				opacity: 0,
 				duration: 0.4,
@@ -126,43 +137,39 @@ export default function DonationInformation() {
 
 			// Fade out text
 			tl.to(
-				".info-text",
+				".info-text-container",
 				{
 					opacity: 0,
 					duration: 0.4,
 					ease: "power2.out",
-					// onStart: () => setText(texts[0]),
-					// onComplete: () => setText(texts[1]),
 				},
 				0.6,
 			);
 
-			// Fade in text
-			tl.to(".info-text", {
+			// Fade in text, should be changed at this point
+			// Add dropshadow + border
+			tl.to(".info-text-container", {
 				opacity: 1,
 				duration: 0.4,
 				boxShadow: "0 9px 7px rgb(0 0 0 / 0.1)",
 				border: "rgba(255, 255, 255, 0.4) 2px solid",
 				ease: "power2.out",
-				// onStart: () => setText(texts[1]),
-				// onComplete: () => setText(texts[1]),
 			});
 
-			// Move the text
-			tl.to(".info-text", {
+			// Move the text container
+			tl.to(".info-text-container", {
 				x: "50px",
 				y: "-200px",
 				duration: 0.4,
 				ease: "quint.inOut",
 			});
 
-			// Setup the lottie container
+			// Setup the lottie container for the shipment lottie
 			tl.to(
 				".lottie-component",
 				{
 					opacity: 1,
-					// backgroundColor: "rgba(0, 0, 0, 0)", // Transparent background
-					duration: 0,
+                    duration: 0,
 				},
 				"<",
 			);
@@ -172,18 +179,88 @@ export default function DonationInformation() {
 				shipmentLottieProxy,
 				{
 					frame: lottieConfigs.Shipment.frames,
-					duration: 1,
-					delay: 1,
+					duration: 0.8,
 					ease: "none",
-					// onStart: () => {
-					// 	setLottieConfig(lottieConfigs.Shipment);
-					// },
 					onUpdate: () => {
 						lottieObject.setFrame(shipmentLottieProxy.frame);
 					},
 				},
-				"<-=1",
+				"<",
 			);
+
+			// Rotate and send the shipment lottie back offscreen
+			tl.to(".lottie-component", {
+				rotate: "-8deg",
+				x: "-500px",
+				duration: 0.6,
+			});
+
+			// Move the text under the container
+			tl.to(
+				".info-text",
+				{
+					y: "400px",
+					duration: 0.4,
+					ease: "quad.out",
+				},
+				"<",
+			);
+
+			// Move the text above the container
+			tl.set(".info-text", {
+				y: "-400px",
+			});
+
+			// Move the text back down into the container
+			tl.to(".info-text", {
+				y: "0px",
+				duration: 0.4,
+				ease: "quad.out",
+			});
+
+			// Setup truck lottie
+			tl.set(
+				".lottie-component",
+				{
+					rotate: "0deg",
+					scaleX: "-1",
+					x: "-500px",
+				},
+				"<",
+			);
+
+			// Setup truck lottie animation
+			// const truckLottieProxy = { frame: 0 };
+			// tl.to(
+			//     truckLottieProxy,
+			//     {
+			//         frame: lottieConfigs.Truck.frames,
+			//         duration: 4,
+			//         ease: "none",
+			//         onStart: () => {
+			//             // if (truckLottieProxy.frame >= lottieConfigs.Truck.frames) {
+			//             //     truckLottieProxy.frame = 0;
+			//             // }
+
+            //             // console.log(truckLottieProxy.frame)
+			//             // lottieObject.setFrame(truckLottieProxy.frame);
+            //             // lottieObject.play();
+
+			//         },
+			//     },
+			//     "<"
+			// );
+
+			// Move truck lottie onscreen
+			tl.to(".lottie-component", {
+				x: "0px",
+				duration: 0.5,
+                onStart: () => {
+                    lottieObject.play();
+                    lottieObject.setFrame(0);
+                    lottieObject.setLoop(true);
+                },
+			});
 
 			ScrollTrigger.create({
 				trigger: ".pinned-container",
@@ -194,12 +271,12 @@ export default function DonationInformation() {
 					const scrollerPos = (self.scroller as Window).scrollY;
 					const startPos = self.start;
 					const currentPos = scrollerPos - startPos;
-                    
+
 					progress = Math.max(0, currentPos / 1000); // Creating an artifical time value based on the scroll position
 
 					tl.seek(progress, false); // Seek the animation to the current position
-					setDevTime(progress);
-                    handleStepChange(progress); 
+					// setDevTime(progress);
+					handleStepChange(progress);
 				},
 			});
 		},
@@ -213,7 +290,7 @@ export default function DonationInformation() {
 			<div className="pinned-container bg-primary flex min-h-svh w-full flex-row text-white">
 				<div className="donation-information-root relative flex w-full flex-col overflow-clip px-6 pb-6">
 					<HeaderText
-						text={`How? ${devTime.toFixed(2)}s`}
+						text={`How?`}
 						minSize="text-6xl"
 						className="mb-4"
 					/>
@@ -230,9 +307,9 @@ export default function DonationInformation() {
 						/>
 						{/* </div> */}
 					</div>
-					<p className="info-text absolute bottom-36 max-w-[390px] rounded-md p-2 font-bold md:text-2xl lg:left-[440px] lg:w-[500px] lg:text-xl">
-						{text.content}
-					</p>
+					<div className="info-text-container absolute bottom-36 max-w-[390px] overflow-clip rounded-md p-2 font-bold md:text-2xl lg:left-[440px] lg:w-[500px] lg:text-xl">
+						<p className="info-text">{text.content}</p>
+					</div>
 				</div>
 			</div>
 
