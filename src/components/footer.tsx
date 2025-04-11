@@ -2,7 +2,7 @@ import { GithubIcon, InstagramIcon, MailIcon } from "lucide-react";
 
 export default function Footer() {
     return (
-        <footer className="w-full h-64 bg-white p-10">
+        <footer className="w-full h-54 bg-white p-10">
             <div className="flex flex-row h-full justify-between">
                 <div className=" h-full flex flex-col">
 
