@@ -9,11 +9,11 @@
 }
 
 .scale-children-115 > * {
-    transform: scale(1.15);
+	transform: scale(1.15);
 }
 
 .scale-children-225 > * {
-    transform: scale(2.25);
+	transform: scale(2.25);
 }
 
 @theme inline {

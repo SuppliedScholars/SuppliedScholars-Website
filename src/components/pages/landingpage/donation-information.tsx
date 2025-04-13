@@ -169,7 +169,7 @@ export default function DonationInformation() {
 				".lottie-component",
 				{
 					opacity: 1,
-                    duration: 0,
+					duration: 0,
 				},
 				"<",
 			);
@@ -229,37 +229,15 @@ export default function DonationInformation() {
 				"<",
 			);
 
-			// Setup truck lottie animation
-			// const truckLottieProxy = { frame: 0 };
-			// tl.to(
-			//     truckLottieProxy,
-			//     {
-			//         frame: lottieConfigs.Truck.frames,
-			//         duration: 4,
-			//         ease: "none",
-			//         onStart: () => {
-			//             // if (truckLottieProxy.frame >= lottieConfigs.Truck.frames) {
-			//             //     truckLottieProxy.frame = 0;
-			//             // }
-
-            //             // console.log(truckLottieProxy.frame)
-			//             // lottieObject.setFrame(truckLottieProxy.frame);
-            //             // lottieObject.play();
-
-			//         },
-			//     },
-			//     "<"
-			// );
-
 			// Move truck lottie onscreen
 			tl.to(".lottie-component", {
 				x: "0px",
 				duration: 0.5,
-                onStart: () => {
-                    lottieObject.play();
-                    lottieObject.setFrame(0);
-                    lottieObject.setLoop(true);
-                },
+				onStart: () => {
+					lottieObject.play();
+					lottieObject.setFrame(0);
+					lottieObject.setLoop(true);
+				},
 			});
 
 			ScrollTrigger.create({
@@ -282,8 +260,6 @@ export default function DonationInformation() {
 		},
 		{ scope: root, dependencies: [lottieObject] },
 	);
-
-	// console.log(lottieConfig)
 
 	return (
 		<div className="flex h-max w-full flex-col" ref={root}>

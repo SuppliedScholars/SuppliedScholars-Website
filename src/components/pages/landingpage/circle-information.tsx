@@ -53,7 +53,7 @@ function CircleInfoComponent({
 
 			<p
 				className={cn(
-					"xs:text-2xl max-w-[400px] text-center text-lg font-bold pb-4 md:pb-0",
+					"xs:text-2xl max-w-[400px] pb-4 text-center text-lg font-bold md:pb-0",
 					reverse ? "md:text-left" : "md:text-right",
 				)}
 			>
@@ -68,37 +68,38 @@ function CircleInfoComponent({
 export function CircleInformationComponents() {
 	const root = useRef<HTMLDivElement | null>(null);
 
-    useGSAP(() => {
+	useGSAP(
+		() => {
+			const isSmall = window.matchMedia("(max-width: 1024px)").matches;
+			const elements: HTMLDivElement[] =
+				gsap.utils.toArray(".circle-info");
 
-        const isSmall = window.matchMedia("(max-width: 1024px)").matches;
-        const elements: HTMLDivElement[] = gsap.utils.toArray(".circle-info");
-    
-        elements.forEach((el, i) => {
-            const xTranslate = i % 2 === 0 ? "-200px" : "200px";
-    
-            gsap.fromTo(
-                el,
-                {
-                    x: isSmall ? xTranslate : "0px",
-                    y: isSmall ? "0px" : "-100px",
-                    opacity: 0,
-                },
-                {
-                    x: "0px",
-                    y: "0px",
-                    opacity: 1,
-                    duration: 1,
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: el,
-                        start: isSmall ? "top bottom" : "top 80%",
-                    },
-                }
-            );
-        });
-        
+			elements.forEach((el, i) => {
+				const xTranslate = i % 2 === 0 ? "-200px" : "200px";
 
-    }, { scope: root, dependencies: [] });
+				gsap.fromTo(
+					el,
+					{
+						x: isSmall ? xTranslate : "0px",
+						y: isSmall ? "0px" : "-100px",
+						opacity: 0,
+					},
+					{
+						x: "0px",
+						y: "0px",
+						opacity: 1,
+						duration: 1,
+						ease: "power2.out",
+						scrollTrigger: {
+							trigger: el,
+							start: isSmall ? "top bottom" : "top 80%",
+						},
+					},
+				);
+			});
+		},
+		{ scope: root, dependencies: [] },
+	);
 
 	return (
 		<div

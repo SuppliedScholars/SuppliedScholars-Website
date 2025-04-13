@@ -11,9 +11,7 @@ export default function LandingPageHeader() {
 
 			<p className="hidden basis-1/3 text-2xl font-bold md:flex md:justify-center">
 				{/* Supplied Scholars */}
-                <Link href="/">
-                    Supplied Scholars
-                </Link>
+				<Link href="/">Supplied Scholars</Link>
 			</p>
 
 			<div className="text-md flex basis-1/2 flex-row justify-end font-semibold md:basis-1/3">

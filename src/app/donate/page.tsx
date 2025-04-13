@@ -1,4 +1,3 @@
-
 import LandingPageHeader from "@/components/pages/landingpage/header";
 import HeaderText from "@/components/pages/landingpage/header-text";
 import { cn } from "@/lib/utils";
@@ -30,7 +29,7 @@ export default function Donate() {
 		<div className="flex min-h-svh flex-col items-center">
 			<LandingPageHeader />
 
-			<div className="flex grow flex-col lg:justify-between px-4 py-10 lg:w-7/8 gap-0 lg:flex-row lg:gap-4 lg:py-22 xl:w-5/8">
+			<div className="flex grow flex-col gap-0 px-4 py-10 lg:w-7/8 lg:flex-row lg:justify-between lg:gap-4 lg:py-22 xl:w-5/8">
 				<div className="">
 					<HeaderText
 						minSize="text-5xl"

@@ -7,10 +7,9 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 
-
 function LandingPageContent() {
 	return (
-		<div className="bg-primary relative flex flex-grow flex-col gap-6 px-5 py-10 pb-0 text-white sm:py-15  lg:px-20">
+		<div className="bg-primary relative flex flex-grow flex-col gap-6 px-5 py-10 pb-0 text-white sm:py-15 lg:px-20">
 			<div>
 				<HeaderText text="Opportunity For" minSize="text-5xl" />
 				<p className="text-accent text-6xl leading-14 font-bold md:mb-2 md:text-8xl md:leading-18 lg:mb-8 lg:text-[110px] lg:leading-12">
@@ -24,8 +23,15 @@ function LandingPageContent() {
 			</p>
 
 			<div className="flex flex-row gap-4">
-				<Button className="text-md bg-accent hover:bg-accent/70 h-[42px] w-[130px] rounded-full font-semibold p-0">
-                    <Link href="/donate" className=" w-full h-full py-2" prefetch={true}> Donate </Link>
+				<Button className="text-md bg-accent hover:bg-accent/70 h-[42px] w-[130px] rounded-full p-0 font-semibold">
+					<Link
+						href="/donate"
+						className="h-full w-full py-2"
+						prefetch={true}
+					>
+						{" "}
+						Donate{" "}
+					</Link>
 				</Button>
 				<Button
 					className="border-accent text-accent text-md box-border h-[42px] w-[130px] rounded-full border-4 bg-transparent font-semibold"
@@ -56,19 +62,23 @@ export default function Home() {
 				<LandingPageContent />
 			</div>
 
-			<div className="bg-primary flex lg:gap-4 w-full flex-row text-white px-4 lg:px-0 lg:pl-6 ">
-				<div className="flex grow  flex-col w-3/7">
-					<HeaderText text="Why?" minSize="text-6xl" className=" mb-8" />
+			<div className="bg-primary flex w-full flex-row px-4 text-white lg:gap-4 lg:px-0 lg:pl-6">
+				<div className="flex w-3/7 grow flex-col">
+					<HeaderText
+						text="Why?"
+						minSize="text-6xl"
+						className="mb-8"
+					/>
 
 					<CircleInformationComponents />
 				</div>
-				<div className="hidden lg:block max-w-4/7 min-h-svh">
+				<div className="hidden min-h-svh max-w-4/7 lg:block">
 					<Image
 						src="/Classroom.jpg"
 						alt="Classroom"
 						width={7008}
 						height={4672}
-						className="rounded-l-full h-full  object-cover "
+						className="h-full rounded-l-full object-cover"
 					/>
 				</div>
 			</div>
