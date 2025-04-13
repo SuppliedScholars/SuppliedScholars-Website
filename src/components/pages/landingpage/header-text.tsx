@@ -2,11 +2,11 @@ import { cn } from "@/lib/utils";
 
 export default function HeaderText({
 	text,
-	minSize,
+	minSize="7xl",
     className,
 }: {
 	text: string;
-	minSize: string;
+	minSize?: string;
     className?: string;
 }) {
 	return (

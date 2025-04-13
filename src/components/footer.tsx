@@ -11,7 +11,7 @@ export default function Footer() {
 
 
                     <div className=" mt-4 flex flex-row w-full text-primary gap-4">
-                    <InstagramIcon className="h-6 w-6 " /> —
+                        <InstagramIcon className="h-6 w-6 " /> —
                         <GithubIcon className="h-6 w-6" /> —
                         <MailIcon className="h-6 w-6 " /> 
                     </div>

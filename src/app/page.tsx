@@ -1,45 +1,12 @@
 import ArrowAnimation from "@/components/arrow-animation";
 import { CircleInformationComponents } from "@/components/pages/landingpage/circle-information";
 import DonationInformation from "@/components/pages/landingpage/donation-information";
+import LandingPageHeader from "@/components/pages/landingpage/header";
 import HeaderText from "@/components/pages/landingpage/header-text";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
-function LandingPageHeader() {
-	return (
-		<div className="bg-card text-primary flex h-16 w-full flex-row items-center justify-between px-2 md:px-6">
-			{/* Logo */}
-			<div className="flex basis-1/2 md:basis-1/3">
-				<div className="bg-primary size-10 rounded-full"></div>
-			</div>
-
-			<p className="hidden basis-1/3 text-2xl font-bold md:flex md:justify-center">
-				Supplied Scholars
-			</p>
-
-			<div className="text-md flex basis-1/2 flex-row justify-end font-semibold md:basis-1/3">
-				<Button
-					variant="link"
-					className="text-md cursor-pointer rounded-full"
-				>
-					Home
-				</Button>
-				<Button
-					variant="link"
-					className="text-md cursor-pointer rounded-full"
-				>
-					About
-				</Button>
-				<Button
-					variant="link"
-					className="text-md cursor-pointer rounded-full"
-				>
-					Contact
-				</Button>
-			</div>
-		</div>
-	);
-}
 
 function LandingPageContent() {
 	return (
@@ -57,8 +24,8 @@ function LandingPageContent() {
 			</p>
 
 			<div className="flex flex-row gap-4">
-				<Button className="text-md bg-accent hover:bg-accent/70 h-[42px] w-[130px] rounded-full font-semibold">
-					Donate
+				<Button className="text-md bg-accent hover:bg-accent/70 h-[42px] w-[130px] rounded-full font-semibold p-0">
+                    <Link href="/donate" className=" w-full h-full py-2" prefetch={true}> Donate </Link>
 				</Button>
 				<Button
 					className="border-accent text-accent text-md box-border h-[42px] w-[130px] rounded-full border-4 bg-transparent font-semibold"
