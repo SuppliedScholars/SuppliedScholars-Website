@@ -1,28 +1,7 @@
+import Donorbox from "@/components/pages/donate/donorbox";
 import LandingPageHeader from "@/components/pages/landingpage/header";
 import HeaderText from "@/components/pages/landingpage/header-text";
-import { cn } from "@/lib/utils";
-import Script from "next/script";
 
-function Donorbox({ className }: { className?: string }) {
-	return (
-		<>
-			<Script src="https://donorbox.org/widget.js"></Script>{" "}
-			<iframe
-				src="https://donorbox.org/embed/suppliedscholars?amount=25"
-				name="donorbox"
-				seamless={true}
-				scrolling="no"
-				height="900px"
-				width="100%"
-				className={cn(
-					"max-h-none max-w-[500px] min-w-[250px]",
-					className,
-				)}
-				allow="payment"
-			></iframe>
-		</>
-	);
-}
 
 export default function Donate() {
 	return (
