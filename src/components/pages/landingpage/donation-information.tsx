@@ -88,6 +88,7 @@ export default function DonationInformation() {
 		lottieConfigs.Money,
 	);
 	const [text, setText] = useState(texts[0]);
+    const currentStep = useRef(0);
 	// const [devTime, setDevTime] = useState(0);
 
 	const scrollLockHeight = 450; // 300svh
@@ -97,13 +98,19 @@ export default function DonationInformation() {
 	};
 
 	const handleStepChange = (progress: number) => {
-		if (progress < 1.4) {
+		if (progress < 1.4 && currentStep.current !== 0) {
+            console.log('Step 0', currentStep.current)
+            currentStep.current = 0;
 			setText(texts[0]);
 			setLottieConfig(lottieConfigs.Money);
-		} else if (progress >= 1 && progress < 3.2) {
+		} else if ((progress >= 1.4 && progress < 3.2) && currentStep.current !== 1) {
+            console.log('Step 1', currentStep.current)
+            currentStep.current = 1
 			setText(texts[1]);
 			setLottieConfig(lottieConfigs.Shipment);
-		} else if (progress >= 3.2 && progress < 5) {
+		} else if ((progress >= 3.2 && progress < 5) && currentStep.current !== 2) {
+            console.log('Step 2', currentStep.current)
+            currentStep.current = 2
 			setText(texts[2]);
 			setLottieConfig(lottieConfigs.Truck);
 		}
