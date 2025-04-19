@@ -166,7 +166,7 @@ export default function DonationInformation() {
 
             // Very performance heavy to animation shadow, so just set it instead and then fade it in
             tl.set(".info-text-container", {
-                boxShadow: "0 9px 7px rgb(0 0 0 / 0.1)",
+                // boxShadow: "0 9px 7px rgb(0 0 0 / 0.1)",
                 border: "rgba(255, 255, 255, 0.4) 2px solid",
             })
 
