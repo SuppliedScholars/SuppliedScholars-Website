@@ -155,13 +155,26 @@ export default function DonationInformation() {
 
 			// Fade in text, should be changed at this point
 			// Add dropshadow + border
-			tl.to(".info-text-container", {
-				opacity: 1,
-				duration: 0.4,
-				boxShadow: "0 9px 7px rgb(0 0 0 / 0.1)",
-				border: "rgba(255, 255, 255, 0.4) 2px solid",
-				ease: "power2.out",
-			});
+
+			// tl.to(".info-text-container", {
+			// 	opacity: 1,
+			// 	duration: 0.4,
+			// 	boxShadow: "0 9px 7px rgb(0 0 0 / 0.1)",
+			// 	border: "rgba(255, 255, 255, 0.4) 2px solid",
+			// 	ease: "power2.out",
+			// });
+
+            // Very performance heavy to animation shadow, so just set it instead and then fade it in
+            tl.set(".info-text-container", {
+                boxShadow: "0 9px 7px rgb(0 0 0 / 0.1)",
+                border: "rgba(255, 255, 255, 0.4) 2px solid",
+            })
+
+            tl.to(".info-text-container", {
+                opacity: 1,
+                duration: 0.4,
+                ease: "power2.out",
+            })
 
 			// Move the text container
 			tl.to(".info-text-container", {
