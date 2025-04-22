@@ -4,8 +4,20 @@ import DonationInformation from "@/components/pages/landingpage/donation-informa
 import LandingPageHeader from "@/components/pages/landingpage/header";
 import HeaderText from "@/components/pages/landingpage/header-text";
 import { Button } from "@/components/ui/button";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+    title: "Supplied Scholars",
+    description:
+        "Supplied Scholars is a non-profit based in Washington State dedicated to our goal of making education accessible for all.",
+    metadataBase: new URL("https://suppliedscholars.com/"),
+    icons: {
+        icon: "/favicon.ico",
+        shortcut: "/favicon.ico",
+    },
+};
 
 function LandingPageContent() {
 	return (
